@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/21/test/">
+    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/some-approaches-to-crawl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="William Liu">
@@ -347,8 +347,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/21/test/" itemprop="url">
-                  test
+                <a class="post-title-link" href="/2018/07/19/some-approaches-to-crawl/" itemprop="url">
+                  未命名
                 </a>
               
             
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-07-21 03:11:15" itemprop="dateCreated datePublished" datetime="2018-07-21T03:11:15+08:00">2018-07-21</time>
+              <time title="创建时间：2018-07-19 21:09:46" itemprop="dateCreated datePublished" datetime="2018-07-19T21:09:46+08:00">2018-07-19</time>
             
 
             
@@ -391,36 +391,11 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-09 18:09:29" itemprop="dateModified" datetime="2018-08-09T18:09:29+08:00">2018-08-09</time>
+                <time title="修改时间：2018-09-07 20:34:02" itemprop="dateModified" datetime="2018-09-07T20:34:02+08:00">2018-09-07</time>
               
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cat1/" itemprop="url" rel="index"><span itemprop="name">cat1</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cat1/cat2/" itemprop="url" rel="index"><span itemprop="name">cat2</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -451,7 +426,51 @@
       
         
           
-            
+            <h1 id="抓取网页内容（爬虫）一些方法介绍"><a href="#抓取网页内容（爬虫）一些方法介绍" class="headerlink" title="抓取网页内容（爬虫）一些方法介绍"></a>抓取网页内容（爬虫）一些方法介绍</h1><h2 id="抓取网页内容的一般流程"><a href="#抓取网页内容的一般流程" class="headerlink" title="抓取网页内容的一般流程"></a>抓取网页内容的一般流程</h2><ol>
+<li>发HTTP请求</li>
+<li>解析请求返回的结果</li>
+<li>得到的结果持久化</li>
+</ol>
+<h2 id="常用的抓取网页内容的方法和工具"><a href="#常用的抓取网页内容的方法和工具" class="headerlink" title="常用的抓取网页内容的方法和工具"></a>常用的抓取网页内容的方法和工具</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><ul>
+<li>cURL</li>
+</ul>
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP:"></a>PHP:</h3><ul>
+<li>原生Client URL 库（cURL)</li>
+<li>类库，比如：<a href="http://requests.ryanmccue.info/" target="_blank" rel="noopener">Requests</a>, <a href="http://guzzlephp.org/" target="_blank" rel="noopener">Guzzle</a></li>
+<li>爬虫开发框架：<a href="https://doc.phpspider.org/" target="_blank" rel="noopener">phpspider</a></li>
+</ul>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
+<li>类库，比如：<a href="http://docs.python-requests.org/" target="_blank" rel="noopener">Requests</a></li>
+<li>爬虫开发框架：<a href="https://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></li>
+</ul>
+<h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><ul>
+<li><a href="https://www.npmjs.com/package/curl-request" target="_blank" rel="noopener">curl-request</a></li>
+<li>爬虫开发框架：<a href="http://nodecrawler.org/" target="_blank" rel="noopener">node-crawler</a></li>
+</ul>
+<h2 id="可能遇到的问题和困难"><a href="#可能遇到的问题和困难" class="headerlink" title="可能遇到的问题和困难"></a>可能遇到的问题和困难</h2><ul>
+<li>登录：保存Cookie, 认证</li>
+<li>被屏蔽</li>
+<li>验证码</li>
+<li>执行JS</li>
+<li>其他</li>
+</ul>
+<h2 id="另外一种思路"><a href="#另外一种思路" class="headerlink" title="另外一种思路"></a>另外一种思路</h2><p>利用界面自动化测试工具进行抓取，简单点讲就是：程序唤起浏览器后模拟用户行为进行操作</p>
+<p>适用场景：</p>
+<ul>
+<li>登录验证比较麻烦、或者验证码无法破解</li>
+<li>目标地址有强大的反爬机制</li>
+<li>一次性操作</li>
+</ul>
+<h3 id="目前的一些方案"><a href="#目前的一些方案" class="headerlink" title="目前的一些方案"></a>目前的一些方案</h3><ul>
+<li><a href="https://selenium-python.readthedocs.io/" target="_blank" rel="noopener">Selenium</a></li>
+<li><a href="https://developers.google.com/web/tools/puppeteer/" target="_blank" rel="noopener">Puppeteer</a></li>
+<li><a href="http://phantomjs.org/" target="_blank" rel="noopener">PhantomJS</a> （项目已暂停）</li>
+</ul>
+<h2 id="更临时的一种方法"><a href="#更临时的一种方法" class="headerlink" title="更临时的一种方法"></a>更临时的一种方法</h2><p>适用场景：临时性的一次性抓取</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">Fetch API</a></li>
+</ul>
+
           
         
       
@@ -702,21 +721,6 @@
               
 
               
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
 
               
                 
@@ -727,9 +731,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
