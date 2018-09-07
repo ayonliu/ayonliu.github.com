@@ -110,18 +110,18 @@
 
 
 
-  <meta name="description" content="抓取网页内容（爬虫）一些方法介绍抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-req">
+  <meta name="description" content="抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-request 爬虫开发框架：node">
 <meta name="keywords" content="spider,crawler">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="抓取网页内容（爬虫）一些方法介绍">
 <meta property="og:url" content="http://ayonliu.github.io/2018/07/19/some-approaches-to-crawl/index.html">
 <meta property="og:site_name" content="刘勇的平凡之路">
-<meta property="og:description" content="抓取网页内容（爬虫）一些方法介绍抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-req">
+<meta property="og:description" content="抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-request 爬虫开发框架：node">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-07T12:38:59.799Z">
+<meta property="og:updated_time" content="2018-09-07T12:43:56.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="抓取网页内容（爬虫）一些方法介绍抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-req">
+<meta name="twitter:title" content="抓取网页内容（爬虫）一些方法介绍">
+<meta name="twitter:description" content="抓取网页内容的一般流程 发HTTP请求 解析请求返回的结果 得到的结果持久化  常用的抓取网页内容的方法和工具命令行 cURL  PHP: 原生Client URL 库（cURL) 类库，比如：Requests, Guzzle 爬虫开发框架：phpspider  Python 类库，比如：Requests 爬虫开发框架：Scrapy  NodeJS curl-request 爬虫开发框架：node">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>Hello World | 刘勇的平凡之路</title>
+  <title>抓取网页内容（爬虫）一些方法介绍 | 刘勇的平凡之路</title>
   
 
 
@@ -345,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">抓取网页内容（爬虫）一些方法介绍
               
             
           </h1>
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-07 20:38:59" itemprop="dateModified" datetime="2018-09-07T20:38:59+08:00">2018-09-07</time>
+                <time title="修改时间：2018-09-07 20:43:56" itemprop="dateModified" datetime="2018-09-07T20:43:56+08:00">2018-09-07</time>
               
             
           </span>
@@ -420,7 +420,7 @@
       
 
       
-        <h1 id="抓取网页内容（爬虫）一些方法介绍"><a href="#抓取网页内容（爬虫）一些方法介绍" class="headerlink" title="抓取网页内容（爬虫）一些方法介绍"></a>抓取网页内容（爬虫）一些方法介绍</h1><h2 id="抓取网页内容的一般流程"><a href="#抓取网页内容的一般流程" class="headerlink" title="抓取网页内容的一般流程"></a>抓取网页内容的一般流程</h2><ol>
+        <h2 id="抓取网页内容的一般流程"><a href="#抓取网页内容的一般流程" class="headerlink" title="抓取网页内容的一般流程"></a>抓取网页内容的一般流程</h2><ol>
 <li>发HTTP请求</li>
 <li>解析请求返回的结果</li>
 <li>得到的结果持久化</li>
@@ -448,7 +448,7 @@
 <li>执行JS</li>
 <li>其他</li>
 </ul>
-<h2 id="另外一种思路"><a href="#另外一种思路" class="headerlink" title="另外一种思路"></a>另外一种思路</h2><p>利用界面自动化测试工具进行抓取，简单点讲就是：程序唤起浏览器后模拟用户行为进行操作</p>
+<h2 id="另外一种思路"><a href="#另外一种思路" class="headerlink" title="另外一种思路"></a>另外一种思路</h2><p>利用界面自动化测试工具进行抓取，简单点讲就是：程序唤起浏览器后模拟用户行为进行操作<br><a id="more"></a></p>
 <p>适用场景：</p>
 <ul>
 <li>登录验证比较麻烦、或者验证码无法破解</li>
@@ -484,7 +484,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spider-crawler/" rel="tag"># spider,crawler</a>
+            <a href="/tags/spider/" rel="tag"># spider</a>
+          
+            <a href="/tags/crawler/" rel="tag"># crawler</a>
           
         </div>
       
@@ -602,7 +604,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -652,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#抓取网页内容（爬虫）一些方法介绍"><span class="nav-number">1.</span> <span class="nav-text">抓取网页内容（爬虫）一些方法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抓取网页内容的一般流程"><span class="nav-number">1.1.</span> <span class="nav-text">抓取网页内容的一般流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的抓取网页内容的方法和工具"><span class="nav-number">1.2.</span> <span class="nav-text">常用的抓取网页内容的方法和工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行"><span class="nav-number">1.2.1.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">1.2.2.</span> <span class="nav-text">PHP:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.2.3.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS"><span class="nav-number">1.2.4.</span> <span class="nav-text">NodeJS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能遇到的问题和困难"><span class="nav-number">1.3.</span> <span class="nav-text">可能遇到的问题和困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另外一种思路"><span class="nav-number">1.4.</span> <span class="nav-text">另外一种思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的一些方案"><span class="nav-number">1.4.1.</span> <span class="nav-text">目前的一些方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更临时的一种方法"><span class="nav-number">1.5.</span> <span class="nav-text">更临时的一种方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#抓取网页内容的一般流程"><span class="nav-number">1.</span> <span class="nav-text">抓取网页内容的一般流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的抓取网页内容的方法和工具"><span class="nav-number">2.</span> <span class="nav-text">常用的抓取网页内容的方法和工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行"><span class="nav-number">2.1.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">2.2.</span> <span class="nav-text">PHP:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">2.3.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS"><span class="nav-number">2.4.</span> <span class="nav-text">NodeJS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能遇到的问题和困难"><span class="nav-number">3.</span> <span class="nav-text">可能遇到的问题和困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另外一种思路"><span class="nav-number">4.</span> <span class="nav-text">另外一种思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的一些方案"><span class="nav-number">4.1.</span> <span class="nav-text">目前的一些方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更临时的一种方法"><span class="nav-number">5.</span> <span class="nav-text">更临时的一种方法</span></a></li></ol></div>
             
 
           </div>
