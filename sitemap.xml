@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ayonliu.github.io/2018/07/21/test/</loc>
+    
+    <lastmod>2018-08-09T10:09:29.766Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ayonliu.github.io/about/index.html</loc>
     
     <lastmod>2018-08-09T10:04:22.878Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://ayonliu.github.io/tags/index.html</loc>
     
     <lastmod>2018-08-09T09:44:26.384Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ayonliu.github.io/2018/07/19/test/</loc>
-    
-    <lastmod>2018-08-09T09:41:15.571Z</lastmod>
     
   </url>
   
