@@ -539,6 +539,9 @@
           
 
   
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  
 
 
 
@@ -842,6 +845,23 @@
 
 
 
+  
+    
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script type="text/javascript">
+        const gitalk = new Gitalk({
+          clientID: '498b0416e7c7e4cc2837',
+          clientSecret: '54342f0b0504d3c17de150363d05d0f23a78b886',
+          repo: 'blog-comments',
+          owner: 'ayonliu',
+          admin: 'ayonliu# support multiple admins split with comma, e.g. foo,bar'.split(','),
+          pagerDirection: 'last',
+          // facebook-like distraction free mode
+          distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')
+      </script>
+    
   
 
 
