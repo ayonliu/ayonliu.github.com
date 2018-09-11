@@ -110,25 +110,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="tag1">
+  <meta name="description" content="问题表现最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：1Out of resources when opening file &amp;apos;./xxx.MYD&amp;apos; (Errcode: 24 - Too many open files) 问题很明显：打开文件过多，超过了配置的限制。 问题分析查看 table_open_cache, ope">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://ayonliu.github.io/2018/07/19/hello-world/index.html">
+<meta property="og:title" content="MySQL MyISAM 分区（partition）导致打开文件过多">
+<meta property="og:url" content="http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/index.html">
 <meta property="og:site_name" content="刘勇的平凡之路">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="问题表现最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：1Out of resources when opening file &amp;apos;./xxx.MYD&amp;apos; (Errcode: 24 - Too many open files) 问题很明显：打开文件过多，超过了配置的限制。 问题分析查看 table_open_cache, ope">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-09T09:49:07.967Z">
+<meta property="og:updated_time" content="2018-09-11T11:21:01.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="MySQL MyISAM 分区（partition）导致打开文件过多">
+<meta name="twitter:description" content="问题表现最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：1Out of resources when opening file &amp;apos;./xxx.MYD&amp;apos; (Errcode: 24 - Too many open files) 问题很明显：打开文件过多，超过了配置的限制。 问题分析查看 table_open_cache, ope">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ayonliu.github.io/2018/07/19/hello-world/"/>
+  <link rel="canonical" href="http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/"/>
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>Hello World | 刘勇的平凡之路</title>
+  <title>MySQL MyISAM 分区（partition）导致打开文件过多 | 刘勇的平凡之路</title>
   
 
 
@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="William Liu">
@@ -345,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">MySQL MyISAM 分区（partition）导致打开文件过多
               
             
           </h1>
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-09 17:49:07" itemprop="dateModified" datetime="2018-08-09T17:49:07+08:00">2018-08-09</time>
+                <time title="修改时间：2018-09-11 19:21:01" itemprop="dateModified" datetime="2018-09-11T19:21:01+08:00">2018-09-11</time>
               
             
           </span>
@@ -420,16 +420,36 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+        <h2 id="问题表现"><a href="#问题表现" class="headerlink" title="问题表现"></a>问题表现</h2><p>最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Out of resources when opening file &apos;./xxx.MYD&apos; (Errcode: 24 - Too many open files)</span><br></pre></td></tr></table></figure></p>
+<p>问题很明显：打开文件过多，超过了配置的限制。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>查看 table_open_cache, open_files_limit 当前配置的值：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%open_%'</span>;</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| Variable_name              | Value |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| have_openssl               | YES   |</span><br><span class="line">| innodb_open_files          | 2000  |</span><br><span class="line">| open_files_limit           | 5000  |</span><br><span class="line">| table_open_cache           | 2000  |</span><br><span class="line">| table_open_cache_instances | 16    |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>查看当前 table 打开的情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global status like <span class="string">'Open%tables'</span>;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Open_tables   | 500   |</span><br><span class="line">| Opened_tables | 7841  |</span><br><span class="line">+---------------+-------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure></p>
+<p>可以看到 Open_tables 还未达到 table_open_cache 的值，因此随着的表的不断打开，文件描述符也不断的被打开，直到达到 table_open_cache 设定的值才会释放。<br>对比查看系统中 mysql 打开的文件数量：<code>lsof -u mysql | wc -l</code>，持续跟踪可以发现这个数字一直在上升，很快要接近 open_files_limit 的值，最终导致“Too many open files”。</p>
+<p>官方文档对此也有描述：<a href="https://dev.mysql.com/doc/refman/5.6/en/table-cache.html" target="_blank" rel="noopener">8.4.3.1 How MySQL Opens and Closes Tables</a></p>
+<blockquote>
+<p>Make sure that your operating system can handle the number of open file descriptors implied by the table_open_cache setting. If table_open_cache is set too high, MySQL may run out of file descriptors and refuse connections, fail to perform queries, and be very unreliable.</p>
+</blockquote>
+<h2 id="问题解决方法"><a href="#问题解决方法" class="headerlink" title="问题解决方法"></a>问题解决方法</h2><p>根据实际情况有2种解决方法：</p>
+<ul>
+<li><p>降低 table_open_cache 的数值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="built_in">set</span> global table_open_cache=1000;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加大 open_files_limit 的数值：<br>修改文件 <code>/usr/lib/systemd/system/mysqld.service</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Sets open_files_limit</span><br><span class="line">LimitNOFILE = 20480</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里要注意不能超过操作系统的打开文件数限制。</p>
+<h2 id="问题根本原因挖掘"><a href="#问题根本原因挖掘" class="headerlink" title="问题根本原因挖掘"></a>问题根本原因挖掘</h2><p>问题的表现是 MySQL 打开文件数量过快过多，最终超过 open_files_limit 的限制，从而导致 MySQL 无法提供服务。<br>那是什么原因导致 MySQL 打开文件数量过快过多呢？<br>接合报错信息和 MySQL 打开的文件分析，发现打开某些表时，会同时打开N个文件，这就是问题所在。</p>
+<ul>
+<li>对于MyISAM表来说，正常每打开一次表都会额外打开一个 MYD文件（MySQL Data），一个MYI文件（MySQL Index），MYI文件可以在不同session间共用；</li>
+<li>对于使用了分区表（partition）的 MyISAM 表来说，每一次打开表，不管分区是否被使用，都会打开表的所有分区，例如一个表分了10个区，第一次对这个表的访问会打开20个文件，后面每次访问都会再打开10个文件</li>
+</ul>
+<p>官方文档对此也有描述：<a href="https://dev.mysql.com/doc/refman/5.6/en/table-cache.html" target="_blank" rel="noopener">8.4.3.1 How MySQL Opens and Closes Tables</a></p>
+<blockquote>
+<p>You should also take into account the fact that the MyISAM storage engine needs two file descriptors for each unique open table. For a partitioned MyISAM table, two file descriptors are required for each partition of the opened table. (Note further that when MyISAM opens a partitioned table, it opens every partition of this table, whether or not a given partition is actually used. </p>
+</blockquote>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>MyISAM 的分区（partition）最好别用，真需要用分表，用水平分表或垂直分表代替。</p>
 
       
     </div>
@@ -450,7 +470,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tag1/" rel="tag"># tag1</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       
@@ -631,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题表现"><span class="nav-number">1.</span> <span class="nav-text">问题表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解决方法"><span class="nav-number">3.</span> <span class="nav-text">问题解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题根本原因挖掘"><span class="nav-number">4.</span> <span class="nav-text">问题根本原因挖掘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>

@@ -512,7 +512,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="William Liu">
@@ -531,8 +531,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/19/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2018/07/19/myisam-partition-too-many-open-files/" itemprop="url">
+                  MySQL MyISAM 分区（partition）导致打开文件过多
                 </a>
               
             
@@ -575,7 +575,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-09 17:49:07" itemprop="dateModified" datetime="2018-08-09T17:49:07+08:00">2018-08-09</time>
+                <time title="修改时间：2018-09-11 19:21:01" itemprop="dateModified" datetime="2018-09-11T19:21:01+08:00">2018-09-11</time>
               
             
           </span>
@@ -609,13 +609,12 @@
 
       
         
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+          <h2 id="问题表现"><a href="#问题表现" class="headerlink" title="问题表现"></a>问题表现</h2><p>最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Out of resources when opening file &apos;./xxx.MYD&apos; (Errcode: 24 - Too many open files)</span><br></pre></td></tr></table></figure></p>
+<p>问题很明显：打开文件过多，超过了配置的限制。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>查看 table_open_cache, open_files_limit 当前配置的值：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%open_%'</span>;</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| Variable_name              | Value |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| have_openssl               | YES   |</span><br><span class="line">| innodb_open_files          | 2000  |</span><br><span class="line">| open_files_limit           | 5000  |</span><br><span class="line">| table_open_cache           | 2000  |</span><br><span class="line">| table_open_cache_instances | 16    |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/hello-world/#more" rel="contents">
+            <a class="btn" href="/2018/07/19/myisam-partition-too-many-open-files/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/</loc>
+    
+    <lastmod>2018-09-11T11:21:01.250Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ayonliu.github.io/2018/07/19/some-approaches-to-crawl/</loc>
     
     <lastmod>2018-09-07T12:58:41.494Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://ayonliu.github.io/about/index.html</loc>
     
     <lastmod>2018-08-09T10:04:22.878Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ayonliu.github.io/2018/07/19/hello-world/</loc>
-    
-    <lastmod>2018-08-09T09:49:07.967Z</lastmod>
     
   </url>
   
