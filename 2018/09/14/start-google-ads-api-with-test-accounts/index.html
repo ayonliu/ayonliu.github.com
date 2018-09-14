@@ -110,24 +110,34 @@
 
 
 
-  <meta name="description" content="记录一些编程点滴">
-<meta name="keywords" content="PHP,Python,MySQL,JavaScript,HTML5,Lua">
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘勇的平凡之路">
-<meta property="og:url" content="http://ayonliu.github.io/index.html">
+  <meta name="description" content="Developer Token申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。  创建生产经理帐号 在生产经理帐号中请求开发者令牌（production manager developer token）  请求成功后在 TO">
+<meta name="keywords" content="google ads">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用测试账户调试Google Ads API">
+<meta property="og:url" content="http://ayonliu.github.io/2018/09/14/start-google-ads-api-with-test-accounts/index.html">
 <meta property="og:site_name" content="刘勇的平凡之路">
-<meta property="og:description" content="记录一些编程点滴">
+<meta property="og:description" content="Developer Token申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。  创建生产经理帐号 在生产经理帐号中请求开发者令牌（production manager developer token）  请求成功后在 TO">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/product-manager-account.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-manager-account.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/creat-test-client-account.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-client-customer-id.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/oauth2-client-id-secret.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/access_code.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/refresh_token.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-ad-groups.png">
+<meta property="og:updated_time" content="2018-09-14T11:05:09.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘勇的平凡之路">
-<meta name="twitter:description" content="记录一些编程点滴">
+<meta name="twitter:title" content="用测试账户调试Google Ads API">
+<meta name="twitter:description" content="Developer Token申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。  创建生产经理帐号 在生产经理帐号中请求开发者令牌（production manager developer token）  请求成功后在 TO">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ayonliu/exercise/master/images/product-manager-account.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://ayonliu.github.io/"/>
+  <link rel="canonical" href="http://ayonliu.github.io/2018/09/14/start-google-ads-api-with-test-accounts/"/>
 
 
 
@@ -137,7 +147,7 @@
   };
 </script>
 
-  <title>刘勇的平凡之路</title>
+  <title>用测试账户调试Google Ads API | 刘勇的平凡之路</title>
   
 
 
@@ -193,8 +203,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -311,9 +320,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -345,11 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/14/start-google-ads-api-with-test-accounts/" itemprop="url">
-                  用测试账户调试Google Ads API
-                </a>
+          <h1 class="post-title" itemprop="name headline">用测试账户调试Google Ads API
               
             
           </h1>
@@ -412,9 +417,7 @@
       
 
       
-        
-          
-            <h2 id="Developer-Token"><a href="#Developer-Token" class="headerlink" title="Developer Token"></a>Developer Token</h2><p>申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。</p>
+        <h2 id="Developer-Token"><a href="#Developer-Token" class="headerlink" title="Developer Token"></a>Developer Token</h2><p>申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。</p>
 <ol>
 <li><a href="https://ads.google.com/home/tools/manager-accounts/" target="_blank" rel="noopener">创建生产经理帐号</a></li>
 <li><a href="https://developers.google.com/adwords/api/docs/guides/signup" target="_blank" rel="noopener">在生产经理帐号中请求开发者令牌（production manager developer token）</a></li>
@@ -474,8 +477,6 @@
 <li><a href="https://developers.google.com/adwords/api/docs/guides/call-structure" target="_blank" rel="noopener">API 典型使用案例</a></li>
 </ul>
 
-          
-        
       
     </div>
 
@@ -493,356 +494,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/some-approaches-to-crawl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="William Liu">
-      <meta itemprop="description" content="记录一些编程点滴">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/95673ef5d3710a6664b1ac1e28c2620b?s=80">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘勇的平凡之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/some-approaches-to-crawl/" itemprop="url">
-                  抓取网页内容（爬虫）一些方法介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-19 21:09:46" itemprop="dateCreated datePublished" datetime="2018-07-19T21:09:46+08:00">2018-07-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-09-07 20:58:41" itemprop="dateModified" datetime="2018-09-07T20:58:41+08:00">2018-09-07</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/google-ads/" rel="tag"># google ads</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="抓取网页内容的一般流程"><a href="#抓取网页内容的一般流程" class="headerlink" title="抓取网页内容的一般流程"></a>抓取网页内容的一般流程</h2><ol>
-<li>发HTTP请求</li>
-<li>解析请求返回的结果</li>
-<li>得到的结果持久化</li>
-</ol>
-<h2 id="常用的抓取网页内容的方法和工具"><a href="#常用的抓取网页内容的方法和工具" class="headerlink" title="常用的抓取网页内容的方法和工具"></a>常用的抓取网页内容的方法和工具</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><ul>
-<li>cURL</li>
-</ul>
-<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP:"></a>PHP:</h3><ul>
-<li>原生Client URL 库（cURL)</li>
-<li>类库，比如：<a href="http://requests.ryanmccue.info/" target="_blank" rel="noopener">Requests</a>, <a href="http://guzzlephp.org/" target="_blank" rel="noopener">Guzzle</a></li>
-<li>爬虫开发框架：<a href="https://doc.phpspider.org/" target="_blank" rel="noopener">phpspider</a></li>
-</ul>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
-<li>类库，比如：<a href="http://docs.python-requests.org/" target="_blank" rel="noopener">Requests</a></li>
-<li>爬虫开发框架：<a href="https://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></li>
-</ul>
-<h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><ul>
-<li><a href="https://www.npmjs.com/package/curl-request" target="_blank" rel="noopener">curl-request</a></li>
-<li>爬虫开发框架：<a href="http://nodecrawler.org/" target="_blank" rel="noopener">node-crawler</a></li>
-</ul>
-<h2 id="可能遇到的问题和困难"><a href="#可能遇到的问题和困难" class="headerlink" title="可能遇到的问题和困难"></a>可能遇到的问题和困难</h2><ul>
-<li>登录：保存Cookie, 认证</li>
-<li>被屏蔽</li>
-<li>验证码</li>
-<li>执行JS</li>
-<li>其他</li>
-</ul>
-<h2 id="另外一种思路"><a href="#另外一种思路" class="headerlink" title="另外一种思路"></a>另外一种思路</h2><p>利用界面自动化测试工具进行抓取，简单点讲就是：程序唤起浏览器后模拟用户行为进行操作<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/some-approaches-to-crawl/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/19/some-approaches-to-crawl/" rel="next" title="抓取网页内容（爬虫）一些方法介绍">
+                <i class="fa fa-chevron-left"></i> 抓取网页内容（爬虫）一些方法介绍
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/07/19/myisam-partition-too-many-open-files/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="William Liu">
-      <meta itemprop="description" content="记录一些编程点滴">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/95673ef5d3710a6664b1ac1e28c2620b?s=80">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘勇的平凡之路">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/19/myisam-partition-too-many-open-files/" itemprop="url">
-                  MySQL MyISAM 分区（partition）导致打开文件过多
-                </a>
-              
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-19 21:09:46" itemprop="dateCreated datePublished" datetime="2018-07-19T21:09:46+08:00">2018-07-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-09-11 19:21:01" itemprop="dateModified" datetime="2018-09-11T19:21:01+08:00">2018-09-11</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="问题表现"><a href="#问题表现" class="headerlink" title="问题表现"></a>问题表现</h2><p>最近公司一个业务环境的数据库，出现无法连接的情况，重启后过几个小时问题又出现。查看报错信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Out of resources when opening file &apos;./xxx.MYD&apos; (Errcode: 24 - Too many open files)</span><br></pre></td></tr></table></figure></p>
-<p>问题很明显：打开文件过多，超过了配置的限制。</p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>查看 table_open_cache, open_files_limit 当前配置的值：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%open_%'</span>;</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| Variable_name              | Value |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">| have_openssl               | YES   |</span><br><span class="line">| innodb_open_files          | 2000  |</span><br><span class="line">| open_files_limit           | 5000  |</span><br><span class="line">| table_open_cache           | 2000  |</span><br><span class="line">| table_open_cache_instances | 16    |</span><br><span class="line">+----------------------------+-------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/19/myisam-partition-too-many-open-files/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -852,14 +533,22 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  
+
+
 
         </div>
         
@@ -880,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -971,6 +669,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Developer-Token"><span class="nav-number">1.</span> <span class="nav-text">Developer Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试经理帐号（test-manager-account）"><span class="nav-number">2.</span> <span class="nav-text">测试经理帐号（test manager account）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#申请测试客户账号（test-client-account）"><span class="nav-number">3.</span> <span class="nav-text">申请测试客户账号（test client account）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-OAuth2-身份验证，将-OAuth2-与测试帐号配合使用"><span class="nav-number">4.</span> <span class="nav-text">设置 OAuth2 身份验证，将 OAuth2 与测试帐号配合使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成-OAuth2-凭据（Credentials）"><span class="nav-number">4.1.</span> <span class="nav-text">生成 OAuth2 凭据（Credentials）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-OAuth2-刷新令牌（Refresh-token）"><span class="nav-number">4.2.</span> <span class="nav-text">获取 OAuth2 刷新令牌（Refresh token）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-ads-API-功能"><span class="nav-number">5.</span> <span class="nav-text">测试 ads API 功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1105,6 +819,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
@@ -1135,6 +853,23 @@
 
 
   
+    
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+      <script type="text/javascript">
+        const gitalk = new Gitalk({
+          clientID: '498b0416e7c7e4cc2837',
+          clientSecret: '54342f0b0504d3c17de150363d05d0f23a78b886',
+          repo: 'blog-comments',
+          owner: 'ayonliu',
+          admin: 'ayonliu'.split(','),
+          id: md5(location.pathname),
+          pagerDirection: 'last',
+          // facebook-like distraction free mode
+          distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')
+      </script>
     
   
 
