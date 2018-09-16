@@ -374,12 +374,24 @@
                 
               
 
-              <time title="创建时间：2018-09-14 10:50:58 / 修改时间：19:05:09" itemprop="dateCreated datePublished" datetime="2018-09-14T10:50:58+08:00">2018-09-14</time>
+              <time title="创建时间：2018-09-14 10:50:58" itemprop="dateCreated datePublished" datetime="2018-09-14T10:50:58+08:00">2018-09-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-16 21:51:30" itemprop="dateModified" datetime="2018-09-16T21:51:30+08:00">2018-09-16</time>
               
             
           </span>
@@ -414,47 +426,49 @@
       
         
           
-            <h2 id="Developer-Token"><a href="#Developer-Token" class="headerlink" title="Developer Token"></a>Developer Token</h2><p>申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 developer token），developer token不仅可以在正式环境中使用，也可以在测试环境中使用。</p>
+            <h2 id="申请生产经理账号和开发者令牌"><a href="#申请生产经理账号和开发者令牌" class="headerlink" title="申请生产经理账号和开发者令牌"></a>申请生产经理账号和开发者令牌</h2><p>申请生产经理账号（production manager account）后可以申请生产经理开发者令牌（后面称 Developer Token），Developer Token 会让 AdWords API 识别你的应用。只有经过批准的令牌才能连接到生产 AdWords 帐号的 API；待处理令牌只能连接到测试帐号。一旦 Developer Token 获得批准，就可以将同一令牌用于针对所有 AdWords 帐号的请求，即使它们未关联到与此开发者令牌相关联的经理帐号，也就是说 Developer Token 不仅可以在正式环境中使用，也可以在测试环境中使用。</p>
 <ol>
 <li><a href="https://ads.google.com/home/tools/manager-accounts/" target="_blank" rel="noopener">创建生产经理帐号</a></li>
-<li><a href="https://developers.google.com/adwords/api/docs/guides/signup" target="_blank" rel="noopener">在生产经理帐号中请求开发者令牌（production manager developer token）</a></li>
+<li>[在生产经理帐号中请求开发者令牌（production manager developer token）]<br>注册 AdWords API 时，系统会自动生成一个开发者令牌。提出申请后，令牌立刻进入待审批状态。在令牌获得批准后，可以指定在生产环境中使用的目标 AdWords 帐号。<br>(<a href="https://developers.google.com/adwords/api/docs/guides/signup" target="_blank" rel="noopener">https://developers.google.com/adwords/api/docs/guides/signup</a>)</li>
 </ol>
-<p>请求成功后在 TOOLS -&gt; API Center 中可以看到相应的 developer token。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/product-manager-account.png" alt="developer token"></p>
-<p>在下面的流程中，对测试经理帐号发出请求时，需要使用这里的生产经理帐号开发者令牌。即使该令牌尚未获得批准，对测试帐号依然有效。</p>
+<p>请求成功后在 TOOLS -&gt; API Center 中可以看到相应的 Developer Token。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/product-manager-account.png" alt="Developer Token"></p>
+<p><strong>可以使用开发者令牌来指定任何目标 AdWords 帐号，因此，只需使用目标帐号（或其某一个经理帐号，包括测试账号）的 OAuth2 凭据来授权你的请求即可（<a href="#测试经理帐号（test-manager-account）">见下文</a>）。</strong></p>
+<p>在下面的流程中，对测试经理帐号发出请求时，就会使用到这里的生产经理帐号开发者令牌。</p>
 <h2 id="测试经理帐号（test-manager-account）"><a href="#测试经理帐号（test-manager-account）" class="headerlink" title="测试经理帐号（test manager account）"></a>测试经理帐号（test manager account）</h2><ul>
 <li><a href="https://adwords.google.com/um/Welcome/?sf=mt" target="_blank" rel="noopener">申请测试经理帐号</a><br>测试经理帐号申请成功，登录后可以看到一个红色的标签 Test account，说明是测试经理帐号，如果没有在 AdWords 帐号页上看到红色的“Test account”标签，那么该帐号是一个生产帐号。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-manager-account.png" alt="test account"></li>
 </ul>
 <h2 id="申请测试客户账号（test-client-account）"><a href="#申请测试客户账号（test-client-account）" class="headerlink" title="申请测试客户账号（test client account）"></a>申请测试客户账号（test client account）</h2><p>测试经理帐号申请成功后才能进行这一步。</p>
 <ol>
 <li>使用 AdWords 网页界面，在之前创建的测试经理帐号下创建测试客户帐号。当您以测试经理帐号登录 AdWords 时，您创建的所有客户帐号都将自动成为测试帐号。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/creat-test-client-account.png" alt="create test client account"></li>
-<li>记下新测试客户帐号的客户 ID （client customer ID）并保存：稍后您需要将其添加到配置文件中。客户帐号的客户 ID 如下所示。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-client-customer-id.png" alt="client customer ID"></li>
+<li>记下新测试客户帐号的客户 ID （Client Customer ID）并保存：稍后您需要将其添加到配置文件中。客户帐号的 Client Customer ID 如下所示：<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/test-client-customer-id.png" alt="client customer ID"></li>
 <li>使用 AdWords 网页界面，在测试客户帐号下创建几个测试广告系列（test campaigns），比如我这里创建一个名为“test1”的 campaign，生成的 id 为1557850521（后面会用到）。</li>
 </ol>
-<h2 id="设置-OAuth2-身份验证，将-OAuth2-与测试帐号配合使用"><a href="#设置-OAuth2-身份验证，将-OAuth2-与测试帐号配合使用" class="headerlink" title="设置 OAuth2 身份验证，将 OAuth2 与测试帐号配合使用"></a>设置 OAuth2 身份验证，将 OAuth2 与测试帐号配合使用</h2><p>通过 OAuth2 进行身份验证可让你的应用代表你的帐号进行各种操作。要使用 OAuth2 访问测试帐号，测试经理帐号用户必须向客户端应用授予权限。<br>要使应用能够访问 API，需要 OAuth2 客户端 ID （client ID）和客户端密钥（client secret）。</p>
+<h2 id="设置-OAuth2-身份验证，将-OAuth2-与测试帐号配合使用"><a href="#设置-OAuth2-身份验证，将-OAuth2-与测试帐号配合使用" class="headerlink" title="设置 OAuth2 身份验证，将 OAuth2 与测试帐号配合使用"></a>设置 OAuth2 身份验证，将 OAuth2 与测试帐号配合使用</h2><p>应用必须先获取授予 API 访问权限的 OAuth2 访问令牌，才可以使用 API 访问非公开数据。通过 OAuth2 进行身份验证后可让应用代表你的帐号进行各种操作。要使用 OAuth2 访问测试帐号，测试经理帐号用户必须向客户端应用授予权限。授权后，应用就可以用授权账户提供的 OAuth2 客户端 ID （Client ID）和客户端密钥（Client Secret）来访问 API。</p>
 <h3 id="生成-OAuth2-凭据（Credentials）"><a href="#生成-OAuth2-凭据（Credentials）" class="headerlink" title="生成 OAuth2 凭据（Credentials）"></a>生成 OAuth2 凭据（Credentials）</h3><ol>
 <li>使用经理帐号凭据登录后，打开 <a href="https://console.developers.google.com/apis/credentials" target="_blank" rel="noopener">Google API 控制台凭据页面</a>。</li>
 <li>从项目下拉菜单中，选择 <strong>新建项目</strong>，输入项目的名称，然后点击 <strong>创建</strong>。</li>
 <li>选择 <strong>创建凭据</strong>，然后选择 <strong>OAuth 客户端 ID</strong>。</li>
 <li>点击 <strong>配置同意屏幕(Configure consent screen)</strong>，提供要求的信息，然后点击 <strong>保存</strong> 以返回到<strong>凭据（Credentials）</strong>屏幕。</li>
 <li>在<strong>应用类型</strong>下，选择<strong>其他</strong>。在提供的空间中输入名称。</li>
-<li>点击<strong>创建</strong>。系统会显示 OAuth2 客户端 ID （client ID）和客户端密钥（client secret）。复制并保存这些信息。在下一步中将它们添加到配置文件中。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/oauth2-client-id-secret.png" alt="oauth2 client id &amp; client secret"></li>
+<li>点击<strong>创建</strong>。系统会显示 OAuth2 客户端 ID （Client ID）和客户端密钥（Client Secret）。复制并保存这些信息。在下一步中将它们添加到配置文件中。<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/oauth2-client-id-secret.png" alt="oauth2 client id &amp; client secret"></li>
 </ol>
-<h3 id="获取-OAuth2-刷新令牌（Refresh-token）"><a href="#获取-OAuth2-刷新令牌（Refresh-token）" class="headerlink" title="获取 OAuth2 刷新令牌（Refresh token）"></a>获取 OAuth2 刷新令牌（Refresh token）</h3><p>由于 OAuth2 访问权限会在限定时间后过期，因此使用 OAuth2 刷新令牌来自动更新 OAuth2 访问权限。当请求 OAuth2 刷新令牌时，请确保您以测试经理帐号用户身份登录，以获取测试经理帐号对应的 OAuth2 客户端 ID （client ID）和客户端密钥（client secret）。在针对测试经理帐号提出请求时需要使用生产经理帐号的<a href="#Developer-Token">开发者令牌</a>。</p>
+<h3 id="获取-OAuth2-刷新令牌（Refresh-token）"><a href="#获取-OAuth2-刷新令牌（Refresh-token）" class="headerlink" title="获取 OAuth2 刷新令牌（Refresh token）"></a>获取 OAuth2 刷新令牌（Refresh token）</h3><p>由于 OAuth2 访问权限会在限定时间后过期，因此使用 OAuth2 刷新令牌来自动更新 OAuth2 访问权限。当请求 OAuth2 刷新令牌时，请确保您以测试经理帐号用户身份登录，以获取测试经理帐号对应的 OAuth2 客户端 ID （client ID）和客户端密钥（client secret）。在针对测试经理帐号提出请求时需要使用生产经理帐号的<a href="#申请生产经理账号和开发者令牌">开发者令牌</a>。</p>
 <ol>
-<li><p>调用刷新令牌脚本，这里我用<a href="https://github.com/googleads/googleads-python-lib/blob/master/examples/adwords/authentication/generate_refresh_token.py" target="_blank" rel="noopener">Python版</a>的。 修改 generate_refresh_token.py 文件，把其中的 DEFAULT_CLIENT_ID，DEFAULT_CLIENT_SECRET 修改为<a href="#生成-OAuth2-凭据（Credentials）">上面</a>刚刚创建好的 client ID 和 client secret：</p>
+<li><p>调用刷新令牌脚本，这里我用<a href="https://github.com/googleads/googleads-python-lib/blob/master/examples/adwords/authentication/generate_refresh_token.py" target="_blank" rel="noopener">Python版</a>的。 修改 generate_refresh_token.py 文件，把其中的 DEFAULT_CLIENT_ID，DEFAULT_CLIENT_SECRET 修改为<a href="#生成-OAuth2-凭据（Credentials）">上面</a>刚刚创建好的 Client ID 和 Client Secret：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"># Your OAuth2 Client ID and Secret. If you do not have an ID and Secret yet,</span><br><span class="line"># please go to https://console.developers.google.com and create a set.</span><br><span class="line">DEFAULT_CLIENT_ID = &apos;Your client id here&apos;</span><br><span class="line">DEFAULT_CLIENT_SECRET = &apos;Your client secret here&apos;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行：<code>python generate_refresh_token.py</code></p>
 </li>
 <li>按照提示复制生成的 url 到浏览器，在到达的页面中用<a href="#测试经理帐号（test-manager-account）">测试经理帐号</a>对应的账号登录, 下一步点击“允许”，会出现下图：<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/access_code.png" alt="access code"></li>
 <li>复制下图中的 code 粘贴到步骤2执行的命令行<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/refresh_token.png" alt="refresh token"></li>
-<li>记录下上步中的 Refresh token。</li>
+<li>记录下上步中的 Refresh Token。</li>
 </ol>
-<p>生产环境中，从测试经理帐号切换到生产经理帐号，需要用生产经理帐号相关的 client ID 和 client secret 来请求生产经理帐号的刷新令牌。</p>
-<h2 id="测试-ads-API-功能"><a href="#测试-ads-API-功能" class="headerlink" title="测试 ads API 功能"></a>测试 ads API 功能</h2><ol>
+<p>生产环境中，从测试经理帐号切换到生产经理帐号，需要用生产经理帐号相关的 Client ID 和 Client Secret 来请求生产经理帐号的刷新令牌。</p>
+<h2 id="测试-ads-API-功能"><a href="#测试-ads-API-功能" class="headerlink" title="测试 ads API 功能"></a>测试 ads API 功能</h2><p>上面的步骤里我们已经准备好了调用 API 需要的必要配置：Developer Token, Client Customer ID, Client ID, Client Secret, Refresh Token。下面测试一个 API 调用：</p>
+<ol>
 <li>选择自己熟悉语言的<a href="https://developers.google.com/adwords/api/docs/clientlibraries" target="_blank" rel="noopener">客户端库</a>，这里用Python。</li>
 <li><p>配置文件（googleads.yaml）中填写正确的配置信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># AdWordsClient configurations</span><br><span class="line">adwords:</span><br><span class="line">  developer_token: Developer Token</span><br><span class="line">  client_customer_id: test client id</span><br><span class="line">  client_id: client ID</span><br><span class="line">  client_secret: client secret</span><br><span class="line">  refresh_token: Refresh token</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># AdWordsClient configurations</span><br><span class="line">adwords:</span><br><span class="line">  developer_token: Developer Token</span><br><span class="line">  client_customer_id: Client Customer ID</span><br><span class="line">  client_id: Client ID</span><br><span class="line">  client_secret: Client Secret</span><br><span class="line">  refresh_token: Refresh Token</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试 <a href="https://github.com/googleads/googleads-python-lib/blob/master/examples/adwords/v201806/basic_operations/add_ad_groups.py" target="_blank" rel="noopener">ad groups</a> 功能：</p>
 <ul>
