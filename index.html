@@ -328,6 +328,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/11/23/profiling-php-code-with-xhprof/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="William Liu">
+      <meta itemprop="description" content="记录一些编程点滴">
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/95673ef5d3710a6664b1ac1e28c2620b?s=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘勇的平凡之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/23/profiling-php-code-with-xhprof/" itemprop="url">
+                  利用 XHProf 对 PHP 代码进行性能分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-23 19:38:15 / 修改时间：21:08:41" itemprop="dateCreated datePublished" datetime="2018-11-23T19:38:15+08:00">2018-11-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>遇到程序执行速度慢的情况，除了看服务器系统状态、mysql slow log外，还可以对代码进行性能分析来定位问题。最简单常用的办法是代码不同的地方记录日志来分析程序各个节点的执行时间。<a href="http://pecl.php.net/package/xhprof" target="_blank" rel="noopener">XHProf</a>可以高效地对php代码进行性能分析。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>XHProf 是一个轻量级的分层性能测量分析器的PHP扩展。 可以跟踪调用次数、运行时间、CPU 计算时间和内存开销，展示程序动态调用的路径。XHProf 提供一个基于 HTML 的简单用户界面来展示分析数据，也支持图片的形式查看调用路径。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Centos</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install xhprof</span><br></pre></td></tr></table></figure>
+<p>这是会报如下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Failed to download pecl/xhprof within preferred state “stable”, </span><br><span class="line">latest release is version 0.9.4, stability “beta”, </span><br><span class="line">use “channel://pecl.php.net/xhprof-0.9.4” to install</span><br></pre></td></tr></table></figure></p>
+<p>因为 xhprof 是 beta 版本，不是 stable 版，要用下面命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pecl install channel://pecl.php.net/xhprof-0.9.4</span><br></pre></td></tr></table></figure></p>
+<p>为了后面可以用图片的形式展示，需要安装 graphviz:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install graphviz # 支持图形化展示结果</span><br></pre></td></tr></table></figure></p>
+<p>在 php.ini 中加载扩展，配置生成 profile 数据的存放目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extension=xhprof.so</span><br><span class="line">xhprof.output_dir=生成数据的存放目录</span><br></pre></td></tr></table></figure>
+<p>要通过 web 形式查看分析结果，需要<a href="http://pecl.php.net/get/xhprof-0.9.4.tgz" target="_blank" rel="noopener">下载xhprof源码</a>(里面包括图形化展示分析结果所需的代码和相关类库)放到 web 可以访问到的目录。xhprof 目录结构如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bin</span><br><span class="line">CHANGELOG</span><br><span class="line">CREDITS</span><br><span class="line">examples</span><br><span class="line">extension</span><br><span class="line">LICENSE</span><br><span class="line">package.xml</span><br><span class="line">README</span><br><span class="line">scripts</span><br><span class="line">support</span><br><span class="line">xhprof_html</span><br><span class="line">xhprof_lib</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>以一段简单的代码举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(realpath(dirname(__FILE__).&quot;/vendor/autoload.php&quot;));</span><br><span class="line"></span><br><span class="line">// 在开始分析的地方加上 xhprof_enable() 方法</span><br><span class="line">// XHPROF_FLAGS_NO_BUILTINS 表示不分析 PHP内置函数</span><br><span class="line">xhprof_enable(XHPROF_FLAGS_NO_BUILTINS);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 需要分析的代码开始</span><br><span class="line">// 具体逻辑不用关心</span><br><span class="line">use Simplelog\Simplelog;</span><br><span class="line"></span><br><span class="line">$logFile = &quot;/tmp/simple.log&quot;;</span><br><span class="line">$log = new Simplelog($logFile);</span><br><span class="line">$log-&gt;debug(&apos;skimlinks&apos;, array(&apos;affid&apos;=&gt;&apos;223&apos;));</span><br><span class="line">// 需要分析的代码结束</span><br><span class="line"></span><br><span class="line">// 结束分析</span><br><span class="line">// 分析结果存在数组 $xhprof_data 里</span><br><span class="line">$xhprof_data = xhprof_disable();</span><br><span class="line"></span><br><span class="line">// 将分析结果存到 php.ini 中配置的 xhprof.output_dir 目录中</span><br><span class="line">// 下面代码可以封装，这里只做简单演示用</span><br><span class="line">// xhprof/xhprof_lib/ 是下载源码中的 xhprof_lib，即上图标2的文件夹</span><br><span class="line">include_once &quot;xhprof/xhprof_lib/utils/xhprof_lib.php&quot;;</span><br><span class="line">include_once &quot;xhprof/xhprof_lib/utils/xhprof_runs.php&quot;;</span><br><span class="line"></span><br><span class="line">$xhprof_runs = new XHProfRuns_Default();</span><br><span class="line"></span><br><span class="line">// &quot;xhprof_foo&quot; 是命名空间，可自定义.</span><br><span class="line">// run_id 生成的唯一id，供下面通过 url 的形式访问查看</span><br><span class="line">$run_id = $xhprof_runs-&gt;save_run($xhprof_data, &quot;xhprof_foo&quot;);</span><br><span class="line"></span><br><span class="line">// xhprof/xhprof_html/ 是下载源码中的 xhprof_html，即上图标1的文件夹</span><br><span class="line">// xhprof_html 须放到 web 可以访问到的目录</span><br><span class="line">// link 为可以查看分析结果的地址</span><br><span class="line">$link = &quot;http://yourdomain.com/xhprof_html/index.php?run=$run_id&amp;source=xhprof_foo&quot;;</span><br><span class="line"></span><br><span class="line">echo &quot;&lt;a href=&apos;&#123;$link&#125;&apos; target=&apos;_blank&apos;&gt;&#123;$link&#125;&lt;/a&gt;&quot;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><p>上一步中生成的分析结果，可以通过下面地址查看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yourdomain.com/xhprof_html/index.php?run=5be28a5486b02&amp;source=xhprof_foo</span><br></pre></td></tr></table></figure></p>
+<p>通过上面地址，可以看到类似下面的列表展示，可以从不同的维度来看各方法的性能：执行时长，CPU占用等信息<br><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/xhprof_report.png" alt="xhprof report list"></p>
+<h3 id="主要参数说明"><a href="#主要参数说明" class="headerlink" title="主要参数说明"></a>主要参数说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Calls        调用次数</span><br><span class="line">Calls%   调用百分比</span><br><span class="line">Incl. Wall Time   调用的包括子函数所有花费时间，以微秒算</span><br><span class="line">IWall%                调用的包括子函数所有花费时间的百分比</span><br><span class="line">Excl. Wall Time   函数执行本身花费的时间，不包括子树执行时间,以微秒算</span><br><span class="line">EWall%               函数执行本身花费的时间的百分比不包括子树执行时间</span><br><span class="line">Incl. CPU(microsecs)   方法执行花费的CPU时间，包括子方法的执行时间</span><br><span class="line">ICPU%                          方法执行花费的CPU时间百分比</span><br><span class="line">Excl. CPU(microsec)    方法本身执行花费的CPU时间，不包括子方法的执行时间</span><br><span class="line">ECPU%                         方法本身执行花费的CPU时间百分比</span><br><span class="line">Incl.MemUse(bytes)    方法执行占用的内存，包括子方法执行占用的内存。（单位：字节）</span><br><span class="line">IMemUse%                  方法执行占用的内存百分比。</span><br><span class="line">Excl.MemUse(bytes)    方法本身执行占用的内存，不包括子方法执行占用的内存。（单位：字节）</span><br><span class="line">EMemUse%                  方法本身执行占用的内存百分比。</span><br></pre></td></tr></table></figure>
+<h2 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h2><p>点击上面列表展示中的“View Full Callgraph”，就可以跳转到下图的的图片展示的界面。<br>通过下图可以看到各方法的调用路径以及执行所花费的时间，红色块是执行时间最长的，黄色块是其次。这样就能快速找到对性能影响较大的节点，然后到相应的节点里分析到底是代码还是 mysql 的问题就很方便了。</p>
+<p><img src="https://raw.githubusercontent.com/ayonliu/exercise/master/images/xhprof_graph.png" alt="xhprof report graph"></p>
+<p>参考：<br><a href="http://pecl.php.net/package/xhprof" target="_blank" rel="noopener">XHProf</a><br><a href="http://php.net/manual/zh/book.xhprof.php" target="_blank" rel="noopener">层次式性能分析器</a><br><a href="https://www.kam24.ru/xhprof/docs/index.html#ui_setup" target="_blank" rel="noopener">https://www.kam24.ru/xhprof/docs/index.html#ui_setup</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ayonliu.github.io/2018/09/14/start-google-ads-api-with-test-accounts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -914,7 +1071,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -945,7 +1102,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
